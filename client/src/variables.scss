@@ -1,0 +1,11 @@
+$main-color: rgba(103,58,183,255);
+$text-main-color: white;
+$call-btn-color: #31d68b;
+
+@keyframes show-status{
+    from {opacity: 1;}
+    25%  {opacity: 0.2;}
+    50%  {opacity: 1;}
+    75%  {opacity: 0.2;}
+    to   {opacity: 1;}
+}
