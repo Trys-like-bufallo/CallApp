@@ -1,0 +1,82 @@
+@import '../../variables.scss';
+
+
+.login-page{
+    .login-title{
+        padding-top: 40%;
+        color: $text-main-color;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .username, .password{
+            margin-top: 50px;
+            height: 40px;
+            font-size: 20px;
+            border-radius: 20px;
+            padding-left: 20px;
+        }
+        .login-btn{
+            background-color: $call-btn-color;
+            color: white;
+            margin-top: 80px;
+            width: 35%;
+            height: 50px;
+            border-radius: 20px;
+            @extend .btn;
+        }
+    }
+    .need-phone-number{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .phone-number{
+            margin-top: 50px;
+            height: 40px;
+            font-size: 20px;
+            border-radius: 20px;
+            padding-left: 20px;
+        }
+        .add-phonenumber-btn{
+            background-color: $call-btn-color;
+            color: white;
+            margin-top: 80px;
+            width: 35%;
+            height: 50px;
+            border-radius: 20px;
+            @extend .btn;
+        }
+    }
+    .need2FA{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .passcode{
+            width: 80%;
+            margin-top: 50px;
+            height: 40px;
+            font-size: 20px;
+            border-radius: 20px;
+            padding-left: 20px;
+        }
+        .cer-passcode{
+            background-color: $call-btn-color;
+            color: white;
+            margin-top: 80px;
+            width: 35%;
+            height: 50px;
+            border-radius: 20px;
+            @extend .btn;
+        }
+
+    }
+}
+
