@@ -1,26 +1,19 @@
 import './App.scss';
 import DialPad from './Components/DialPad/DiaPad.js';
-import Header from './Components/Header/Header.js';
-import UserInfor from './Components/UserInfor/UserInfor.js';
-import {useEffect} from 'react';
+
+import Auth from './Components/Auth/Auth.js';
 import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
-  
-  const index = useSelector(state => state.index);
-
-  useEffect(() => {
-    console.log(window.navigator.appVersion);
-  }, [])
+  const login = useSelector(state => state.login);
 
   return (
-    <div className="App">
-      <Header />
-      {index == 0?
-        <DialPad /> :
-        <UserInfor />
-      }     
-    </div>
+      <div className="App">
+        {login ?
+          <DialPad />:
+          <Auth />
+        }
+      </div>
   );
 }
 export default App;
