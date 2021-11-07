@@ -4,10 +4,7 @@ import Auth from './Components/Auth/Auth.js';
 import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
-
   const login = useSelector(state => state.login);
-  const dispatch = useDispatch();
-
 
   return (
       <div className="App">
