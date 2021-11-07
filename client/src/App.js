@@ -1,21 +1,26 @@
 import './App.scss';
 import DialPad from './Components/DialPad/DiaPad.js';
-import {Provider} from 'react-redux';
-import store from './Redux/Store.js';
+import Header from './Components/Header/Header.js';
+import UserInfor from './Components/UserInfor/UserInfor.js';
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
   
+  const index = useSelector(state => state.index);
+
+  useEffect(() => {
+    console.log(window.navigator.appVersion);
+  }, [])
 
   return (
-    <Provider store = {store}>
-      <div className="App">
-        <div className="Menu">
-
-        </div>
-        <DialPad />      
-
-      </div>
-    </Provider>
+    <div className="App">
+      <Header />
+      {index == 0?
+        <DialPad /> :
+        <UserInfor />
+      }     
+    </div>
   );
 }
 export default App;

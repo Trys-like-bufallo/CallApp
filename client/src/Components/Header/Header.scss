@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+
+.header{
+    display: flex;
+    padding-top: 5%;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    .phone-call{
+        display: flex;
+        width: 30%;
+        justify-content: center; 
+        align-items: center;
+        height: 50px;
+        background-color: #31d68b;
+        border-radius: 100px;
+        color: $text-main-color;
+        margin: 0 10px;
+        font-size: 18px;
+        box-shadow: $shadow-btn;
+    }
+
+    .visitor-information{
+        display: flex;
+        width: 40%;
+        justify-content: center; 
+        align-items: center;
+        height: 50px;
+        background-color: #31d68b;
+        border-radius: 100px;
+        color: $text-main-color;
+        margin: 0 10px;
+        font-size: 18px;
+        box-shadow: $shadow-btn;
+    }
+
+    .active{
+        background-color: red;
+        color: $text-main-color;
+    }
+
+}

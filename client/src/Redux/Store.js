@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 var initialState = {
     callStatus: '',
-    incall: false,
+    index: 0,
 }
 
 const Reducer = (state = initialState, action) => {
@@ -20,6 +20,8 @@ const Reducer = (state = initialState, action) => {
             return Object.assign({}, state, {callStatus: 'Connecting'});
         case 'failed':
             return Object.assign({}, state, {callStatus: 'Failed'});
+        case 'show':
+            return Object.assign({}, state, {index: !state.index});
         default:
             return state;
     }

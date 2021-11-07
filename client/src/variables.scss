@@ -9,3 +9,9 @@ $call-btn-color: #31d68b;
     75%  {opacity: 0.2;}
     to   {opacity: 1;}
 }
+$shadow-btn: 0px 8px 15px rgb(0 0 0 / 10%);
+.btn{
+    &:hover{
+        cursor: pointer;
+    }
+}
