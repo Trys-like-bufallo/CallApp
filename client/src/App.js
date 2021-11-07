@@ -1,21 +1,21 @@
 import './App.scss';
 import DialPad from './Components/DialPad/DiaPad.js';
-import {Provider} from 'react-redux';
-import store from './Redux/Store.js';
+import Auth from './Components/Auth/Auth.js';
+import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
-  
+
+  const login = useSelector(state => state.login);
+  const dispatch = useDispatch();
+
 
   return (
-    <Provider store = {store}>
       <div className="App">
-        <div className="Menu">
-
-        </div>
-        <DialPad />      
-
+        {login ?
+          <DialPad />:
+          <Auth />
+        }
       </div>
-    </Provider>
   );
 }
 export default App;
