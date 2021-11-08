@@ -1,18 +1,22 @@
 import './DiaPad.scss';
 import {FaBackspace, FaPhoneAlt} from 'react-icons/fa';
-import {useState, useRef} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import JsSIP from 'jssip';
 import ua from '../../JsSIPConnect.js';
 import axios from 'axios';
 import host from '../../Host.js';
 
-const DialPad = () => {
+const DialPad = ({socket}) => {
 
     const [number, changeNumber] = useState('');
     const [session, setSession] = useState(undefined);
     const [incall, setIncall] = useState(false);
     const remoteAudio = useRef();
+
+    useEffect(() => {
+        socket.emit('send session', localStorage['session']);
+    }, [])
 
     // auto trigger session
     const callStatus = useSelector(state => state.callStatus);

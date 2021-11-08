@@ -15,6 +15,11 @@ const CheckSession = async(req, res) => {
             if(now - data.lastUse > 5*60*1000)
             {
                 res.send({status: 'WrongAccount'});
+                session.findByIdAndDelete(sessionData)
+                .then((err, docs) => {
+                    if(err)
+                        console.log(err);
+                })
                 return;
             }        
             res.send({status: 'Login sucessfully', session: sessionData});

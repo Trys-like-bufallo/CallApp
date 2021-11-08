@@ -71,6 +71,7 @@ const Auth = () => {
     const handlePasscode = () => {
         axios.get(`${host}/certpasscode?username=${username}&password=${password}&passcode=${passcode}&ip=${ip}`)
         .then(res => {
+            console.log(res.data);
             setStatus(res.data);
         })
     }
