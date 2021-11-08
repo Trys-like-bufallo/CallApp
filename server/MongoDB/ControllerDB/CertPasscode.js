@@ -2,15 +2,17 @@ import user from '../Schema/userSchema.js';
 
 const CertPasscode = (req, res) => {
     
-    const data = req.data;
+    const data = req.query;
     user.findOne({username: data.username, password: data.password, passcode: data.passcode})
     .then((cert) => {
         if(cert)
         {
-            res.send('OK');
+            res.send({status: 'Login sucessfully'});
+            cert.ipAddress.push(data.ip);
+            cert.save();
         }
         else
-            res.send("WA");
+            res.send({status: "Wrong2FA"});
     })
 }
 

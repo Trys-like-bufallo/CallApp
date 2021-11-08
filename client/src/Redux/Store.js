@@ -3,6 +3,7 @@ var initialState = {
     callStatus: '',
     incall: false,
     login: false,
+    load: false,
 }
 
 const Reducer = (state = initialState, action) => {
@@ -23,6 +24,8 @@ const Reducer = (state = initialState, action) => {
             return Object.assign({}, state, {callStatus: 'Failed'});
         case 'login':
             return Object.assign({}, state, {login: true});
+        case 'load':
+            return Object.assign({}, state, {load: true});
         default:
             return state;
     }

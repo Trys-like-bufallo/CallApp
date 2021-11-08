@@ -4,6 +4,8 @@ import {useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import JsSIP from 'jssip';
 import ua from '../../JsSIPConnect.js';
+import axios from 'axios';
+import host from '../../Host.js';
 
 const DialPad = () => {
 
@@ -12,6 +14,7 @@ const DialPad = () => {
     const [incall, setIncall] = useState(false);
     const remoteAudio = useRef();
 
+    // auto trigger session
     const callStatus = useSelector(state => state.callStatus);
     const dispatch = useDispatch();
     // Register callbacks to desired call events
