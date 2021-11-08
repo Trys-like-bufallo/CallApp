@@ -2,7 +2,6 @@ import user from '../Schema/userSchema.js';
 
 const AddEmail = (req, res) => {
     const data = req.body;
-    console.log(data);
     user.findOne({username: data.username, password: data.password})
     .then((User) => {
         User.email = data.email;
