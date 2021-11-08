@@ -67,10 +67,8 @@ const DialPad = ({socket}) => {
             // var localStream = session.connection.getLocalStreams()[0];
         });
         session.on('ended', () => {
-            console.log('ended');
         });
         session.on('failed', () => {
-            console.log('failed');
         });
         session.connection.addEventListener('addstream', function (e) {
             // set remote audio stream
