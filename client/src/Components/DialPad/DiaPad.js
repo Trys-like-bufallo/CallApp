@@ -12,10 +12,11 @@ const DialPad = ({socket}) => {
     const [number, changeNumber] = useState('');
     const [session, setSession] = useState(undefined);
     const [incall, setIncall] = useState(false);
+    const ip = useSelector(state => state.ip);
     const remoteAudio = useRef();
 
     useEffect(() => {
-        socket.emit('send session', localStorage['session']);
+        socket.emit('send session', ip);
     }, [])
 
     // auto trigger session

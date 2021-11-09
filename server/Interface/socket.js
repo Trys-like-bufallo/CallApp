@@ -23,7 +23,7 @@ const socket = (app, PORT) => {
             if(sessionData)
             {
                 try {
-                    await session.findById(sessionData)
+                    await session.findOne({ip: sessionData})
                     .then((data) => {
                         if(data)
                         {

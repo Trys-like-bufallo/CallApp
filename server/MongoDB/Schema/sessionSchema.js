@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 const {Schema} = mongoose;
 
 const sessionSchema = new Schema({
+    ip: {type: String},
     lastUse: {type: Date, default: new Date()},
 });
 

@@ -1,5 +1,6 @@
 import user from '../Schema/userSchema.js';
 import session from '../Schema/sessionSchema.js';
+import CreateSession from './CreateSession.js';
 
 const login = async(req, res) => {
 
@@ -22,9 +23,8 @@ const login = async(req, res) => {
             return;
         } 
         state = true;
-        const newSession = new session();
-        newSession.save();
-        res.send({status: 'Login sucessfully', session: newSession._id});
+        CreateSession(data.ip);
+        res.send({status: 'Login sucessfully'});
 
     })
     if(!state)

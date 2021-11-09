@@ -1,5 +1,6 @@
 import user from '../Schema/userSchema.js';
 import session from '../Schema/sessionSchema.js';
+import CreateSession from './CreateSession.js';
 
 const CertPasscode = (req, res) => {
     
@@ -8,11 +9,10 @@ const CertPasscode = (req, res) => {
     .then((cert) => {
         if(cert)
         {
-            const newSession = new session();
-            newSession.save();
-            res.send({status: 'Login sucessfully', session: newSession._id});
+            res.send({status: 'Login sucessfully'});
             cert.ipAddress.push(data.ip);
             cert.save();
+            CreateSession(data.ip);
         }
         else
             res.send({status: "Wrong2FA"});

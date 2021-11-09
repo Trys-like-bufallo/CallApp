@@ -12,19 +12,20 @@ const Auth = () => {
     const [email, setEmail] = useState('');
     const [passcode, setPasscode] = useState('');
     const [status, setStatus] = useState({status: '', email: '', session: ''});
-    const [ip, setIp] = useState('');
+    const ip = useSelector(state => state.ip);
     const load = useSelector(state => state.load);
     const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get('https://geolocation-db.com/json/')
         .then((res) => {
-            setIp(res.data.IPv4);
+            const ip = res.data.IPv4;
+            dispatch({type: 'ip', payload: ip});
+            return ip;
         })
-        .then(() => {
-            if(localStorage['session'])
-            {
-                axios.get(`${host}/checksession?session=${localStorage['session']}`)
+        .then((ip) => {
+            if(ip){
+                axios.get(`${host}/checksession?ip=${ip}`)
                 .then(res => {
                     setStatus(res.data);
                 });

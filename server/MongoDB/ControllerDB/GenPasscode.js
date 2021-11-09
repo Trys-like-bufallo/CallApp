@@ -25,6 +25,7 @@ const GenPasscode = (req, res) => {
         if (error) {
             console.log(error);
         } else {
+            console.log('Send sucessfully');
         }
     });
 

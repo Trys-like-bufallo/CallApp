@@ -4,6 +4,7 @@ var initialState = {
     incall: false,
     login: false,
     load: false,
+    ip: '',
 }
 
 const Reducer = (state = initialState, action) => {
@@ -26,6 +27,8 @@ const Reducer = (state = initialState, action) => {
             return Object.assign({}, state, {login: true});
         case 'load':
             return Object.assign({}, state, {load: true});
+        case 'ip':
+            return Object.assign({}, state, {ip: action.payload});
         default:
             return state;
     }

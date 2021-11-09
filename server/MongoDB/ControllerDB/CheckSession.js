@@ -1,32 +1,25 @@
 import session from '../Schema/sessionSchema.js';
 
 const CheckSession = async(req, res) => {
-    const sessionData = req.query.session;
-
+    const ip = req.query.ip;
+    
     try {
-        await session.findById(sessionData)
-        .then((data) => {
-            if(!data)
-            {
+        await session.findOne({ip: ip})
+        .then(user => {
+            if(!user){
                 res.send({status: 'WrongAccount'});
                 return;
             }
             const now = new Date();
-            if(now - data.lastUse > 5*60*1000)
+            if(now - user.lastUse > 5 * 60 * 1000)
             {
                 res.send({status: 'WrongAccount'});
-                session.findByIdAndDelete(sessionData)
-                .then((err, docs) => {
-                    if(err)
-                        console.log(err);
-                })
                 return;
-            }        
-            res.send({status: 'Login sucessfully', session: sessionData});
-            data.lastUse = new Date();
-            data.save();
-
-        });
+            }
+            
+            res.send({status: 'Login sucessfully'});
+        })
+        .catch(err => console.log(err))
     } catch (error) {
         res.send({status: 'WrongAccount'});
     }
