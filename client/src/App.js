@@ -1,6 +1,5 @@
 import './App.scss';
-import DialPad from './Components/DialPad/DiaPad.js';
-
+import DialPad from './Components/DialPad/DiaPad.js'
 import Auth from './Components/Auth/Auth.js';
 import {useSelector, useDispatch} from 'react-redux';
 
