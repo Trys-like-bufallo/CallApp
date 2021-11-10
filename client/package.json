@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
+    "cross-domain-storage": "^2.0.7",
     "getmac": "^5.20.0",
     "jssip": "^3.8.2",
     "node-sass": "^6.0.1",

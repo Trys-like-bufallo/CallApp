@@ -12,4 +12,3 @@ socket(app, PORT);
 middleWare(app);
 route(app);
 connectMongoDB();
-
