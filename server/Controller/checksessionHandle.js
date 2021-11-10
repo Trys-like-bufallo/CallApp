@@ -3,6 +3,7 @@ import session from '../MongoDB/Schema/sessionSchema.js';
 const checksessionHandle = async(req, res) => {
 
     const sessionData = req.query.session;
+    console.log(sessionData);
     try {
         await session.findById(sessionData)
         .then(data => {
@@ -11,6 +12,7 @@ const checksessionHandle = async(req, res) => {
             }
             else {
                 const now = new Date();
+                console.log(now - data.lastUse);
                 if(now - data.lastUse > 5 * 60 * 1000)
                 {
                     res.send('session error');
