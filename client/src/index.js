@@ -16,7 +16,7 @@ ReactDOM.render(
     <Provider store = {store}>
       <Router>
         <Routes>
-          <Route path = "/" exact element = {<App />} />
+          <Route path = "/" exact element = {<App socket = {socket}/>} />
         </Routes>
       </Router>
     </Provider>

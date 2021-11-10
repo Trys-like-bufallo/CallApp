@@ -7,16 +7,16 @@ import ua from '../../JsSIPConnect.js';
 import axios from 'axios';
 import host from '../../Host.js';
 
+
 const DialPad = ({socket}) => {
 
     const [number, changeNumber] = useState('');
     const [session, setSession] = useState(undefined);
     const [incall, setIncall] = useState(false);
-    const ip = useSelector(state => state.ip);
     const remoteAudio = useRef();
 
     useEffect(() => {
-        socket.emit('send session', ip);
+        socket.emit('send session', localStorage['session']);
     }, [])
 
     // auto trigger session
