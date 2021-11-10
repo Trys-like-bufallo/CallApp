@@ -13,7 +13,6 @@ const checksessionHandle = async(req, res) => {
                 const now = new Date();
                 if(now - data.lastUse > 5 * 60 * 1000)
                 {
-                    console.log(now - data.lastUse);
                     res.send('session error');
                     session.findByIdAndDelete(sessionData);
                     return;
