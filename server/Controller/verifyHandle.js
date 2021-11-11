@@ -11,7 +11,7 @@ const verifyHandle = async(req, res) => {
         else{
             if(data.passcode === userData.passcode)
             {
-                const newSession = new session();
+                const newSession = new session({lastUse: new Date()});
                 newSession.save();
                 res.send({status: 'verify-success', session: newSession._id});
             }

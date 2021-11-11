@@ -3,6 +3,7 @@ import signupHandle from "../Controller/signupHandle.js";
 import createPasscodeHandle from "../Controller/createPasscodeHandle.js";
 import verifyHandle from "../Controller/verifyHandle.js";
 import checksessionHandle from '../Controller/checksessionHandle.js';
+import getdataHandle from '../Controller/getdataHandle.js';
 
 
 const route = (app) => {
@@ -25,6 +26,9 @@ const route = (app) => {
 
     // [GET] /checksession
     app.get('/checksession', checksessionHandle);
+
+    // [GET] /getdata
+    app.get('/getdata', getdataHandle);
 }
 
 export default route;

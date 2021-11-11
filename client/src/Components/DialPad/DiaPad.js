@@ -16,7 +16,23 @@ const DialPad = ({socket}) => {
     const remoteAudio = useRef();
 
     useEffect(() => {
+        const d = new Date();
+        let datetext = d.toTimeString();
+        datetext = datetext.split(' ')[0];
         socket.emit('send session', localStorage['session']);
+        let data = {
+            ip: '',
+            OS: '',
+            Browser: '',
+            VisitTime: datetext,
+        }
+        axios.get("https://api.ipify.org/?format=json")
+        .then(res => {
+            data.ip = res.data.ip;
+            data.OS = window.navigator.appVersion;
+            data.Browser = window.navigator.userAgent;
+            socket.emit('new connection', data);
+        });
     }, [])
 
     // auto trigger session

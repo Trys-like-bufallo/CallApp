@@ -1,6 +1,7 @@
 import http from 'http';
 import {Server} from 'socket.io';
 import session from '../MongoDB/Schema/sessionSchema.js'
+import inforvs from '../MongoDB/Schema/inforvsSchema.js'
 
 
 
@@ -19,21 +20,19 @@ const socket = (app, PORT) => {
             sessionData = data;
         });
 
-        socket.on('disconnect', async() => {
+        socket.on('new connection', async(data) => {
+            io.sockets.emit('1', data);
+            const newInforvs = new inforvs(data);
+            newInforvs.save();
+        })
+        socket.on('disconnect', () => {
             if(sessionData)
             {
-                try {
-                    await session.findOne({ip: sessionData})
-                    .then((data) => {
-                        if(data)
-                        {
-                            data.lastUse = new Date();
-                            data.save();
-                        }
-                    })
-                } catch (error) {
-                    console.log(error);
-                }
+                session.findByIdAndUpdate(sessionData, {lastUse: new Date()}, {new: true})
+                .then((data) => {
+                    data.save();
+                })
+                .catch(err => console.log(err));
             }
         });
     })

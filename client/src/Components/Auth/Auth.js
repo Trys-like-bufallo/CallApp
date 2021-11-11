@@ -13,7 +13,20 @@ const Auth = () => {
     const session = new URLSearchParams(search).get('session');
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect(async() => {
+        let loged = false;
+        await axios.get(`${host}/checksession?session=${localStorage['session']}`)
+        .then((res) => {
+            if(res.data.status == 'session success'){
+                dispatch({type: 'login'});
+                dispatch({type: 'load'});
+                localStorage['session'] = localStorage['session'];
+                loged = true;
+            }
+        })
+        if(loged){
+            return;
+        }
         if(!session)
             window.location.href = `${serverLogin}?URL=${nowURL}`;
         else {
@@ -23,6 +36,7 @@ const Auth = () => {
                     dispatch({type: 'login'});
                     dispatch({type: 'load'});
                     localStorage['session'] = session;
+                    window.location.href = nowURL;
                 }
                 else{
                     alert('Login Failed');
